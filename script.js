@@ -6,17 +6,16 @@ const priceTotal = document.querySelector(".priceTotal");
 
 let cost = +select.value;
 
-select.addEventListener("change", e => {
-    cost = +e.target.value;
-    seats.forEach(seat => seat.classList.remove("selected"));
+const updateNumbers = () => {
+    let numberOfSeats = selectSeat.querySelectorAll(".seat.selected");
+    seatTotal.innerHTML = numberOfSeats.length;
+    priceTotal.innerHTML = numberOfSeats.length * cost;
+};
+
+select.addEventListener("change", ({ target }) => {
+    cost = +target.value;
     updateNumbers();
 });
-
-const updateNumbers = () => {
-    let numberOfSeats = document.querySelectorAll(".row .seat.selected");
-    seatTotal.innerHTML = numberOfSeats.length;
-    priceTotal.innerHTML = cost * numberOfSeats.length;
-};
 
 selectSeat.addEventListener("click", ({ target }) => {
     if (target.tagName === "BUTTON" && !target.classList.contains("occupied")) {
