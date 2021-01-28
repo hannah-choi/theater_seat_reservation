@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link href="style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="selector">
+            <label for="select">Select film:</label>
+            <select name="film" id="film">
+                <option value="12">In the Mood for Love (2000) £12</option>
+                <option value="10">House of Hummingbird (2018) £10</option>
+                <option value="9">The Lives of Others (2006) £9</option>
+                <option value="11">
+                    Portrait of Lady on the Fire (2019) £11
+                </option>
+            </select>
+        </div>
+        <div class="showcase">
+            <span><button class="seat"></button> Available</span>
+            <span><button class="seat selected"></button> Selected</span>
+            <span><button class="seat occupied"></button> Occupied</span>
+        </div>
+
+        <div class="selectSeat">
+            <div class="screen"></div>
+            <section class="row">
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat occupied"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+            </section>
+            <section class="row">
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat occupied"></button>
+                <button class="seat occupied"></button>
+                <button class="seat"></button>
+            </section>
+            <section class="row">
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat occupied"></button>
+            </section>
+            <section class="row">
+                <button class="seat occupied"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+            </section>
+            <section class="row">
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+            </section>
+            <section class="row">
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat occupied"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+                <button class="seat"></button>
+            </section>
+        </div>
+        <div class="calculate">
+            You have selected <span class="seatTotal">00</span>seats for a price
+            of £<span class="priceTotal">00</span>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600&display=swap");
+
+:root {
+    --selected: #1edfc8;
+    --available: #5d5d5d;
+    --darker: #121212;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #212121;
+    color: white;
+    font-family: "Syne", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.selector {
+    margin-top: 300px;
+}
+
+div.screen {
+    width: 180px;
+    height: 50px;
+    transform: rotateX(-45deg);
+    background-color: white;
+    margin: 10px auto 20px auto;
+}
+
+div.seats {
+    border: 1px solid salmon;
+    margin-bottom: 25px;
+}
+
+section.row {
+    display: flex;
+}
+
+div.showcase {
+    font-size: 0.9rem;
+    width: 330px;
+    padding: 2px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--darker);
+}
+
+div.selectSeat {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    perspective: 1200px;
+}
+
+button.seat {
+    margin: 3px;
+    width: 9px;
+    height: 12px;
+    border-radius: 25%;
+    border: none;
+    background-color: var(--available);
+}
+
+button.seat:focus {
+    outline: none;
+}
+
+button.seat:nth-of-type(2) {
+    margin-right: 18px;
+}
+
+button.seat:nth-last-of-type(2) {
+    margin-left: 18px;
+}
+
+button.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.showcase button.seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+button.selected {
+    background-color: var(--selected);
+}
+
+button.occupied {
+    background-color: white;
+}
+
+div.calculate span {
+    color: var(--selected);
+}
