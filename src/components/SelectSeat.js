@@ -1,16 +1,13 @@
 import React from "react";
-import Row from "./Row";
+import { useSeatContext } from "./SeatProvider";
 
-export default function SelectSeat() {
+export default function SelectSeat({ selectSeat }) {
+    const { seatArray } = useSeatContext();
+
     return (
         <div className="selectSeat">
             <div className="screen"></div>
-            <Row />
-            <Row />
-            <Row />
-            <Row />
-            <Row />
-            <Row />
+            <div className="seatsContainer">{seatArray}</div>
         </div>
     );
 }

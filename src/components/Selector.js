@@ -3,7 +3,7 @@ import React from "react";
 export default function Selector() {
     return (
         <div className="selector">
-            <label for="select">Select film:</label>
+            <label htmlFor="select">Select film:</label>
             <select name="film" id="film">
                 <option value="12">In the Mood for Love (2000) £12</option>
                 <option value="10">House of Hummingbird (2018) £10</option>
