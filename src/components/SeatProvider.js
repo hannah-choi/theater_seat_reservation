@@ -1,10 +1,32 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 
 export const SeatContext = createContext(SeatProvider);
 export const useSeatContext = () => useContext(SeatContext);
 
 export default function SeatProvider({ children }) {
     const [selected, setSelected] = useState([]);
+    const [film, setFilm] = useState({
+        index: +localStorage.getItem("index"),
+        price: +localStorage.getItem("price"),
+    });
+
+    // useEffect(() => {
+    //     let savedIndex = localStorage.getItem("index");
+    //     let savedPrice = localStorage.getItem("price");
+
+    //     if (savedIndex && savedPrice) {
+    //         setFilm({ index: +savedIndex, price: +savedPrice });
+    //     } else {
+    //         setFilm({ index: 0, price: 12 });
+    //     }
+    // }, []);
+
+    const updateCost = e => {
+        setFilm({ index: e.target.selectedIndex, price: +e.target.value });
+        localStorage.setItem("index", e.target.selectedIndex);
+        localStorage.setItem("price", e.target.value);
+        // updateNumbers();
+    };
 
     const selectSeat = e => {
         if (!e.target.classList.contains(".occupied")) {
@@ -22,7 +44,6 @@ export default function SeatProvider({ children }) {
 
     const rows = 8;
     const columns = 6;
-    let seats = [];
 
     const seatArray = Array(rows * columns)
         .join(" ")
@@ -44,6 +65,8 @@ export default function SeatProvider({ children }) {
                 selected,
                 selectSeat,
                 seatArray,
+                updateCost,
+                film,
             }}
         >
             {children}
