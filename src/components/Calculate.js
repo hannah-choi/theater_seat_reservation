@@ -3,7 +3,6 @@ import { useSeatContext } from "./SeatProvider";
 
 export default function Calculate() {
     const { selected, film } = useSeatContext();
-    console.log(film.price);
 
     return (
         <div className="calculate">

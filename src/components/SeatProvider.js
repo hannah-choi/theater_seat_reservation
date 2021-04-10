@@ -4,28 +4,27 @@ export const SeatContext = createContext(SeatProvider);
 export const useSeatContext = () => useContext(SeatContext);
 
 export default function SeatProvider({ children }) {
-    const [selected, setSelected] = useState([]);
+    const localStorageSeats = JSON.parse(localStorage.getItem("selected"));
+    const savedSeat =
+        localStorageSeats && localStorageSeats.length > 0
+            ? localStorageSeats
+            : [];
+    const [selected, setSelected] = useState(savedSeat);
     const [film, setFilm] = useState({
         index: +localStorage.getItem("index"),
         price: +localStorage.getItem("price"),
     });
 
-    // useEffect(() => {
-    //     let savedIndex = localStorage.getItem("index");
-    //     let savedPrice = localStorage.getItem("price");
-
-    //     if (savedIndex && savedPrice) {
-    //         setFilm({ index: +savedIndex, price: +savedPrice });
-    //     } else {
-    //         setFilm({ index: 0, price: 12 });
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (selected.length > 0) {
+            localStorage.setItem("selected", JSON.stringify(selected));
+        }
+    }, [selected]);
 
     const updateCost = e => {
         setFilm({ index: e.target.selectedIndex, price: +e.target.value });
         localStorage.setItem("index", e.target.selectedIndex);
         localStorage.setItem("price", e.target.value);
-        // updateNumbers();
     };
 
     const selectSeat = e => {
@@ -53,7 +52,11 @@ export default function SeatProvider({ children }) {
                 <button
                     key={i}
                     data-index={i}
-                    className="seat"
+                    className={
+                        savedSeat.length > 0 && savedSeat.includes(`${i}`)
+                            ? "seat selected"
+                            : "seat"
+                    }
                     onClick={e => selectSeat(e)}
                 ></button>
             );
