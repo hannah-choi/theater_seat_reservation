@@ -9,9 +9,7 @@ export default function Calculate() {
             You have selected{" "}
             <span className="seatTotal">{selected.length}</span>seats for a
             price of £
-            <span className="priceTotal">
-                {film ? +film.price * selected.length : selected.length}
-            </span>
+            <span className="priceTotal">{film.price * selected.length}</span>
         </div>
     );
 }

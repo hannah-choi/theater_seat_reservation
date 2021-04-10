@@ -11,9 +11,15 @@ export default function SeatProvider({ children }) {
             : [];
     const [selected, setSelected] = useState(savedSeat);
     const [film, setFilm] = useState({
-        index: +localStorage.getItem("index"),
-        price: +localStorage.getItem("price"),
+        index: localStorage.getItem("index")
+            ? +localStorage.getItem("index")
+            : 0,
+        price: localStorage.getItem("price")
+            ? +localStorage.getItem("price")
+            : 12,
     });
+
+    const occupied = ["5", "32", "33", "28"];
 
     useEffect(() => {
         if (selected.length > 0) {
@@ -28,15 +34,15 @@ export default function SeatProvider({ children }) {
     };
 
     const selectSeat = e => {
-        if (!e.target.classList.contains(".occupied")) {
+        if (!e.target.classList.contains("occupied")) {
             if (!e.target.classList.contains("selected")) {
                 e.target.classList.add("selected");
                 setSelected([...selected, e.target.dataset.index]);
             } else {
-                e.target.classList.remove("selected");
                 setSelected(
                     selected.filter(item => item !== e.target.dataset.index)
                 );
+                e.target.classList.remove("selected");
             }
         }
     };
@@ -53,7 +59,9 @@ export default function SeatProvider({ children }) {
                     key={i}
                     data-index={i}
                     className={
-                        savedSeat.length > 0 && savedSeat.includes(`${i}`)
+                        occupied.includes(`${i}`)
+                            ? "seat occupied"
+                            : selected.length > 0 && selected.includes(`${i}`)
                             ? "seat selected"
                             : "seat"
                     }
